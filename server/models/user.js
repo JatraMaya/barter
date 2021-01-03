@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            this.hasOne(models.Profile);
         }
         toJSON() {
             return { ...this.get(), id: undefined, updatedAt: undefined, createdAt: undefined };
@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.UUID,
                 defaultValue: nanoid,
             },
-            fullname: DataTypes.STRING,
             username: DataTypes.STRING,
             email: {
                 type: DataTypes.STRING,
