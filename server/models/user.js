@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { nanoid } = require("nanoid");
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         /**
@@ -16,9 +17,18 @@ module.exports = (sequelize, DataTypes) => {
     }
     User.init(
         {
+            uuid: {
+                type: DataTypes.UUID,
+                defaultValue: nanoid,
+            },
             fullname: DataTypes.STRING,
             username: DataTypes.STRING,
-            email: DataTypes.STRING,
+            email: {
+                type: DataTypes.STRING,
+                validate: {
+                    isEmail: { msg: "Please input a valide email addres" },
+                },
+            },
             password: DataTypes.STRING,
             isActive: DataTypes.BOOLEAN,
         },

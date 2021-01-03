@@ -1,5 +1,3 @@
-const { nanoid } = require("nanoid");
-
 ("use strict");
 module.exports = {
     up: async (queryInterface, Sequelize) => {
@@ -9,6 +7,11 @@ module.exports = {
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER,
+            },
+            uuid: {
+                allowNull: false,
+                type: Sequelize.STRING,
+                allowNull: false,
             },
             fullname: {
                 type: Sequelize.STRING,
@@ -21,6 +24,7 @@ module.exports = {
             email: {
                 type: Sequelize.STRING,
                 allowNull: false,
+                unique: true,
             },
             password: {
                 type: Sequelize.STRING,
