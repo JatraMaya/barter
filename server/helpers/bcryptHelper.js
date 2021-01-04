@@ -1,5 +1,4 @@
 const { hash, compare } = require("bcrypt");
-const { reject } = require("lodash");
 const saltRounds = 10;
 
 function hashPassword(password) {
